@@ -3,6 +3,7 @@ import babel from '@rollup/plugin-babel';
 import { rollupPluginHTML as html } from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import esbuild from 'rollup-plugin-esbuild';
+import copy from 'rollup-plugin-copy';
 
 export default {
   input: 'index.html',
@@ -14,35 +15,41 @@ export default {
     dir: 'public',
   },
   preserveEntrySignatures: false,
-
   plugins: [
-    /** Enable using HTML as rollup entrypoint */
+
     html({
       minify: true,
     }),
-    /** Resolve bare module imports */
+
+    // 🔥 THIS IS WHAT YOUR PROFESSOR MEANS
+    copy({
+      targets: [
+        { src: 'elements/images/**/*', dest: 'public/images' },
+        { src: 'api/**/*', dest: 'public/api' }
+      ],
+    }),
+
     nodeResolve(),
-    /** Minify JS, compile JS to a lower language target */
+
+    // 🔥 FIXED LINE (THIS SOLVES YOUR ERROR)
     esbuild({
       minify: true,
-      target: ['chrome64', 'firefox67', 'safari11.1'],
+      target: 'esnext'
     }),
-    /** Bundle assets references via import.meta.url */
+
     importMetaAssets(),
-    /** Minify html and css tagged template literals */
+
     babel({
       plugins: [
         [
           'babel-plugin-template-html-minifier',
           {
-            modules: { lit: ['html', { name: 'css', encapsulation: 'style' }] },
-            failOnError: false,
-            strictCSS: true,
+            modules: {
+              lit: ['html', { name: 'css', encapsulation: 'style' }]
+            },
             htmlMinifier: {
               collapseWhitespace: true,
-              conservativeCollapse: true,
               removeComments: true,
-              caseSensitive: true,
               minifyCSS: true,
             },
           },
