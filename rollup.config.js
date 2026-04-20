@@ -16,40 +16,68 @@ export default {
   },
   preserveEntrySignatures: false,
   plugins: [
-
+    // Allows HTML to be the entry point
     html({
       minify: true,
     }),
 
-    // 🔥 THIS IS WHAT YOUR PROFESSOR MEANS
+    // Copies assets so Vercel can find them
     copy({
       targets: [
-        { src: 'elements/images/**/*', dest: 'public/images' },
-        { src: 'api/**/*', dest: 'public/api' }
+        {
+          src: 'elements/images/',
+          dest: 'public/elements/',
+          flatten: false,
+        },
+        {
+          src: 'api/',
+          dest: 'public/',
+          flatten: false,
+        },
+        {
+          src: [
+            'node_modules/@haxtheweb/simple-icon/lib/svgs/*',
+            '!node_modules/@haxtheweb/simple-icon/lib/svgs/elmsln-custom'
+          ],
+          dest: 'public/svgs',
+          flatten: false,
+        },
+        {
+          src: 'node_modules/@haxtheweb/hax-iconset/lib/svgs/*',
+          dest: 'public/svgs',
+          flatten: false,
+        },
       ],
     }),
 
+    // Resolves node_modules imports
     nodeResolve(),
 
-    // 🔥 FIXED LINE (THIS SOLVES YOUR ERROR)
+    // Fixes your Vercel build error (IMPORTANT CHANGE)
     esbuild({
       minify: true,
-      target: 'esnext'
+      target: 'es2018',
     }),
 
+    // Handles import.meta.url assets
     importMetaAssets(),
 
+    // Minifies HTML/CSS inside Lit templates
     babel({
       plugins: [
         [
           'babel-plugin-template-html-minifier',
           {
             modules: {
-              lit: ['html', { name: 'css', encapsulation: 'style' }]
+              lit: ['html', { name: 'css', encapsulation: 'style' }],
             },
+            failOnError: false,
+            strictCSS: true,
             htmlMinifier: {
               collapseWhitespace: true,
+              conservativeCollapse: true,
               removeComments: true,
+              caseSensitive: true,
               minifyCSS: true,
             },
           },
