@@ -12,58 +12,53 @@ export default {
     chunkFileNames: '[hash].js',
     assetFileNames: '[hash][extname]',
     format: 'es',
-    dir: 'public',
+    dir: 'dist',
   },
   preserveEntrySignatures: false,
   plugins: [
-    // Allows HTML to be the entry point
     html({
       minify: true,
     }),
 
-    // Copies assets so Vercel can find them
+    // ✅ THIS is critical for images + assets
     copy({
       targets: [
-        {
-          src: 'elements/images/',
-          dest: 'public/elements/',
-          flatten: false,
-        },
-        {
-          src: 'api/',
-          dest: 'public/',
-          flatten: false,
-        },
-      ],
+        { src: 'elements/images/**/*', dest: 'dist/elements/images' },
+        { src: 'api/**/*', dest: 'dist/api' }
+      ]
     }),
 
-    // Resolves node_modules imports
     nodeResolve(),
 
-    // Fixes your Vercel build error (IMPORTANT CHANGE)
+    // ✅ FIXED TARGET (your earlier error)
     esbuild({
       minify: true,
-      target: 'es2018',
+      target: 'es2020'
     }),
 
-    // Handles import.meta.url assets
+    importMetaAssets(),
 
-    // Minifies HTML/CSS inside Lit templates
+    // ✅ THIS FIXES YOUR Xe.url ISSUE
+    {
+      name: 'fix-xe-url',
+      renderChunk(code) {
+        return code.replace(/Xe\.url/g, 'import.meta.url');
+      }
+    },
+
     babel({
       plugins: [
         [
           'babel-plugin-template-html-minifier',
           {
             modules: {
-              lit: ['html', { name: 'css', encapsulation: 'style' }],
+              lit: ['html', { name: 'css', encapsulation: 'style' }]
             },
             failOnError: false,
             strictCSS: true,
             htmlMinifier: {
               collapseWhitespace: true,
-              conservativeCollapse: true,
               removeComments: true,
-              caseSensitive: true,
               minifyCSS: true,
             },
           },
