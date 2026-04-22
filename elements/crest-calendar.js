@@ -1,12 +1,10 @@
 import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-
 import { program } from "./data/crest-program.js";
 
-export class CrestCalendar extends DDDSuper(LitElement) {
+export class CrestCalendar extends LitElement {
 
   static properties = {
-    currentDate: { type: Object },
+    currentDate: { type: Object }
   };
 
   constructor() {
@@ -14,40 +12,42 @@ export class CrestCalendar extends DDDSuper(LitElement) {
     this.currentDate = new Date();
   }
 
-  static styles = [
-    super.styles,
-    css`
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 5px;
-      }
+  static styles = css`
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-      .day {
-        border: 1px solid #ccc;
-        padding: 10px;
-        min-height: 80px;
-        background: white;
-      }
+    button {
+      cursor: pointer;
+    }
 
-      .event {
-        font-size: 12px;
-        background: #ddd;
-        margin-top: 4px;
-        padding: 2px;
-      }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
 
-      .controls {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
+    .day {
+      border: 1px solid #ccc;
+      min-height: 90px;
+      padding: 5px;
+      background: white;
+    }
 
-      button {
-        cursor: pointer;
-      }
-    `
-  ];
+    .empty {
+      border: none;
+    }
+
+    .event {
+      font-size: 12px;
+      background: #ddd;
+      margin-top: 3px;
+      padding: 2px;
+    }
+  `;
 
   changeMonth(delta) {
     const d = new Date(this.currentDate);
@@ -64,11 +64,13 @@ export class CrestCalendar extends DDDSuper(LitElement) {
 
     const grid = [];
 
+    // FIXED EMPTY CELLS (prevents random shifting)
     for (let i = 0; i < firstDay; i++) {
-      grid.push(html`<div></div>`);
+      grid.push(html`<div class="day empty"></div>`);
     }
 
     for (let d = 1; d <= days; d++) {
+
       const dayEvents = program.filter(e => {
         const [y, m, day] = e.date.split("-").map(Number);
         return y === year && m === month + 1 && day === d;

@@ -63,10 +63,10 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
           <h2>Team Roster</h2>
 
           <crest-roster .members=${[
-            { name: "Justin Lejeune", role: "Captain", image: "https://randomuser.me/api/portraits/men/1.jpg" },
-            { name: "Alex Carter", role: "Player", image: "https://randomuser.me/api/portraits/men/2.jpg" },
-            { name: "Noah Smith", role: "Player", image: "https://randomuser.me/api/portraits/men/3.jpg" },
-            { name: "Jonah Lee", role: "Player", image: "https://randomuser.me/api/portraits/men/4.jpg" }
+            { name: "Justin Lejeune", role: "Captain", image: "./elements/images/golfer1.png" },
+            { name: "Alex Carter", role: "Player", image: "./elements/images/golfer2.png" },
+            { name: "Noah Smith", role: "Player", image: "./elements/images/golfer3.png" },
+            { name: "Jonah Lee", role: "Player", image: "./elements/images/golfer4.png" }
           ]}></crest-roster>
 
         </crest-page>
@@ -95,7 +95,7 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
         <h2>Welcome to Crest Golf League</h2>
 
         <crest-carousel></crest-carousel>
-        
+
         <crest-event></crest-event>
       </crest-page>
     `;

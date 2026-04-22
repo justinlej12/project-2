@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import { images } from "./data/crest-images.js";
 
 export class CrestCarousel extends LitElement {
 
@@ -10,18 +9,36 @@ export class CrestCarousel extends LitElement {
   constructor() {
     super();
     this.index = 0;
+
+    // ALL GOLF COURSE IMAGES (fixed + consistent)
+    this.images = [
+      "./elements/images/course1.jpg",
+      "https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2",
+      "https://images.unsplash.com/photo-1592919505780-303950717480",
+      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b",
+      "https://images.unsplash.com/photo-1579952363877-27f3bade9f55"
+    ];
   }
 
   static styles = css`
     .container {
       position: relative;
-      max-width: 500px;
+      max-width: 600px;
       margin: auto;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+      border-radius: 12px;
     }
 
     img {
       width: 100%;
-      border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     button {
@@ -31,8 +48,13 @@ export class CrestCarousel extends LitElement {
       background: black;
       color: white;
       border: none;
-      padding: 5px;
+      padding: 8px;
       cursor: pointer;
+      opacity: 0.7;
+    }
+
+    button:hover {
+      opacity: 1;
     }
 
     .prev { left: 0; }
@@ -40,19 +62,20 @@ export class CrestCarousel extends LitElement {
   `;
 
   next() {
-    this.index = (this.index + 1) % images.length;
+    this.index = (this.index + 1) % this.images.length;
   }
 
   prev() {
-    this.index = (this.index - 1 + images.length) % images.length;
+    this.index = (this.index - 1 + this.images.length) % this.images.length;
   }
 
   render() {
-    const img = images[this.index];
-
     return html`
       <div class="container">
-        <img src="${img.src}" alt="${img.alt}" />
+        <div class="image-wrapper">
+          <img src="${this.images[this.index]}" />
+        </div>
+
         <button class="prev" @click=${this.prev}>◀</button>
         <button class="next" @click=${this.next}>▶</button>
       </div>
