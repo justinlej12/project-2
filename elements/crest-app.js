@@ -94,10 +94,8 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
       <crest-page page="home">
         <h2>Welcome to Crest Golf League</h2>
 
-        <crest-carousel>
-          <crest-image src="/api/crest-images.json"></crest-image>
-        </crest-carousel>
-
+        <crest-carousel></crest-carousel>
+        
         <crest-event></crest-event>
       </crest-page>
     `;

@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { images } from "./data/crest-images.js";
 
 export class CrestCarousel extends LitElement {
 
@@ -9,7 +10,6 @@ export class CrestCarousel extends LitElement {
   constructor() {
     super();
     this.index = 0;
-    this.images = [];
   }
 
   static styles = css`
@@ -18,10 +18,12 @@ export class CrestCarousel extends LitElement {
       max-width: 500px;
       margin: auto;
     }
+
     img {
       width: 100%;
       border-radius: 10px;
     }
+
     button {
       position: absolute;
       top: 50%;
@@ -32,22 +34,30 @@ export class CrestCarousel extends LitElement {
       padding: 5px;
       cursor: pointer;
     }
+
     .prev { left: 0; }
     .next { right: 0; }
   `;
 
+  next() {
+    this.index = (this.index + 1) % images.length;
+  }
+
+  prev() {
+    this.index = (this.index - 1 + images.length) % images.length;
+  }
+
   render() {
+    const img = images[this.index];
+
     return html`
       <div class="container">
-        <slot></slot>
+        <img src="${img.src}" alt="${img.alt}" />
         <button class="prev" @click=${this.prev}>◀</button>
         <button class="next" @click=${this.next}>▶</button>
       </div>
     `;
   }
-
-  next() { this.index++; }
-  prev() { this.index--; }
 }
 
 customElements.define("crest-carousel", CrestCarousel);
