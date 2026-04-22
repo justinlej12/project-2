@@ -1,7 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import { rollupPluginHTML as html } from '@web/rollup-plugin-html';
-import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import esbuild from 'rollup-plugin-esbuild';
 import copy from 'rollup-plugin-copy';
 
@@ -32,19 +31,6 @@ export default {
         {
           src: 'api/',
           dest: 'public/',
-          flatten: false,
-        },
-        {
-          src: [
-            'node_modules/@haxtheweb/simple-icon/lib/svgs/*',
-            '!node_modules/@haxtheweb/simple-icon/lib/svgs/elmsln-custom'
-          ],
-          dest: 'public/svgs',
-          flatten: false,
-        },
-        {
-          src: 'node_modules/@haxtheweb/hax-iconset/lib/svgs/*',
-          dest: 'public/svgs',
           flatten: false,
         },
       ],
