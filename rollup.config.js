@@ -20,7 +20,6 @@ export default {
       minify: true,
     }),
 
-    // ✅ THIS is critical for images + assets
     copy({
       targets: [
         { src: 'elements/images/**/*', dest: 'dist/images' }
@@ -29,7 +28,6 @@ export default {
 
     nodeResolve(),
 
-    // ✅ FIXED TARGET (your earlier error)
     esbuild({
       minify: true,
       target: 'es2020'
@@ -37,7 +35,6 @@ export default {
 
     importMetaAssets(),
 
-    // ✅ THIS FIXES YOUR Xe.url ISSUE
     {
       name: 'fix-xe-url',
       renderChunk(code) {

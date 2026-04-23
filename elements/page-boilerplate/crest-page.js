@@ -37,8 +37,8 @@ export class CrestPage extends LitElement {
         <crest-animated 
           slot="logo"
           link="/"
-          src="./elements/images/crest-home1.png"
-          hoveredSrc="./elements/images/crest-home2.png">
+          src="/images/crest-home1.png"
+          hoveredSrc="/images/crest-home2.png">
         </crest-animated>
       </crest-banner>
 
