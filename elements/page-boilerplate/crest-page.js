@@ -10,13 +10,26 @@ export class CrestPage extends LitElement {
   };
 
   static styles = css`
-        .content {
-      padding: 20px;
-      min-height: 80vh;
-      background: var(--bg-color);
-      color: var(--text-color);
+  :host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content {
+    flex: 1; 
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .content {
+      background: rgba(20, 20, 20, 0.75);
+      color: white;
     }
-  `;
+  }
+`;
 
   render() {
     return html`
