@@ -11,11 +11,13 @@ export class CrestCarousel extends LitElement {
     this.index = 0;
 
     this.images = [
-      "https://images.unsplash.com/photo-1592919505780-303950717480",
-      "https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2",
-      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b",
-      "https://images.unsplash.com/photo-1579952363877-27f3bade9f55",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+      "https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sZiUyMGNvdXJzZXxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1700667315305-ef2a027f9078?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sZiUyMHJlc29ydHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://www.golfcoursearchitecture.net/images/ULN-1_web.jpg",
+      "https://i0.wp.com/capemaymag.com/site/wp-content/uploads/golfc.jpg?resize=800%2C514&ssl=1",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/38/05/38/rivercrest-clubhouse.jpg?w=1200&h=-1&s=1",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvg8SlW47SFDkGqWaTmSi2A55OBBSrE2iIzA&s",
+      "https://www.gccsc.com/images/dynamic/getImage.gif?ID=103185"
     ];
   }
 
