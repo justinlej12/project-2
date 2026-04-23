@@ -30,11 +30,24 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
 
   static get styles() {
     return [super.styles,
-    css`
-      :host {
-        display: block;
-      }
-    `];
+      css`
+        :host {
+          display: block;
+          position: relative;
+          min-height: 100vh;
+        }
+  
+        .bg {
+          position: fixed;
+          inset: 0;
+          background-image: url("https://images.squarespace-cdn.com/content/v1/54a65094e4b0631d0c489ac8/30bf8722-6db4-4f40-be88-76d9d06cdb0c/Golden+Hour1-5.jpg");
+          background-size: cover;
+          background-position: center;
+          opacity: 0.25; /* 👈 controls "faded" look */
+          z-index: -1;
+        }
+      `
+    ];
   }
 
   initRouting() {
@@ -63,10 +76,10 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
           <h2>Team Roster</h2>
 
           <crest-roster .members=${[
-            { name: "Justin Lejeune", role: "Captain", image: "./elements/images/golfer1.png" },
-            { name: "Alex Carter", role: "Player", image: "./elements/images/golfer2.png" },
-            { name: "Noah Smith", role: "Player", image: "./elements/images/golfer3.png" },
-            { name: "Jonah Lee", role: "Player", image: "./elements/images/golfer4.png" }
+            { name: "Justin Lejeune", role: "Captain", image: "/images/golfer1.png" },
+            { name: "Alex Carter", role: "Player", image: "/images/golfer2.png" },
+            { name: "Noah Smith", role: "Player", image: "/images/golfer3.png" },
+            { name: "Jonah Lee", role: "Player", image: "/images/golfer4.png" }
           ]}></crest-roster>
 
         </crest-page>
@@ -102,7 +115,10 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   render() {
-    return html`${this.renderPage()}`;
+    return html`
+      <div class="bg"></div>
+      ${this.renderPage()}
+    `;
   }
 }
 

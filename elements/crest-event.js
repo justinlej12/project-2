@@ -26,7 +26,8 @@ export class CrestEvent extends LitElement {
       border: 1px solid #ccc;
       padding: 10px;
       margin: 5px 0;
-      background: white;
+      background: var(--card-bg);
+      color: var(--text-color);
     }
   `;
 

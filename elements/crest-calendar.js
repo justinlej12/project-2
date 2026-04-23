@@ -34,7 +34,7 @@ export class CrestCalendar extends LitElement {
       border: 1px solid #ccc;
       min-height: 90px;
       padding: 5px;
-      background: white;
+      background: var(--card-bg);
     }
 
     .empty {

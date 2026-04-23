@@ -24,7 +24,7 @@ export default {
     copy({
       targets: [
         { src: 'elements/images/**/*', dest: 'dist/elements/images' },
-        { src: 'api/**/*', dest: 'dist/api' }
+        { src: 'elements/images/**/*', dest: 'dist/images' }
       ]
     }),
 

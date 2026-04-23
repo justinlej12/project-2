@@ -1,4 +1,3 @@
-
 import { LitElement, html, css } from "lit";
 
 export class CrestRoster extends LitElement {
@@ -6,11 +5,6 @@ export class CrestRoster extends LitElement {
   static properties = {
     members: { type: Array }
   };
-
-  constructor() {
-    super();
-    this.members = [];
-  }
 
   static styles = css`
     .grid {
@@ -23,8 +17,10 @@ export class CrestRoster extends LitElement {
     .card {
       width: 200px;
       text-align: center;
+      background: var(--card-bg);
+      padding: 10px;
+      border-radius: 10px;
     }
-
     img {
       width: 100%;
       height: 220px;
@@ -36,7 +32,7 @@ export class CrestRoster extends LitElement {
   render() {
     return html`
       <div class="grid">
-        ${this.members.map(m => html`
+        ${this.members?.map(m => html`
           <div class="card">
             <img src="${m.image}" alt="${m.name}">
             <h4>${m.name}</h4>
