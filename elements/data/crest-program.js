@@ -1,32 +1,27 @@
 export const program = [
     {
       name: "Opening Tournament",
-      date: "2025-06-10",
-      location: "Rivercrest Course",
-      description: "Season kickoff tournament."
+      date: "2026-04-10",
+      location: "Rivercrest Course"
     },
     {
       name: "Weekly Match",
-      date: "2025-06-12",
-      location: "Rivercrest Course",
-      description: "League weekly competition."
+      date: "2026-04-12",
+      location: "Rivercrest Course"
     },
     {
       name: "Training Session",
-      date: "2025-06-15",
-      location: "Practice Range",
-      description: "Skill development and coaching."
+      date: "2026-04-15",
+      location: "Practice Range"
     },
     {
       name: "Midseason Tournament",
-      date: "2025-07-01",
-      location: "Rivercrest Course",
-      description: "Competitive midseason event."
+      date: "2026-05-01",
+      location: "Rivercrest Course"
     },
     {
       name: "Final Championship",
-      date: "2025-08-01",
-      location: "Rivercrest Course",
-      description: "Season finale championship."
+      date: "2026-05-20",
+      location: "Rivercrest Course"
     }
   ];

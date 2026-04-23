@@ -23,7 +23,6 @@ export default {
     // ✅ THIS is critical for images + assets
     copy({
       targets: [
-        { src: 'elements/images/**/*', dest: 'dist/elements/images' },
         { src: 'elements/images/**/*', dest: 'dist/images' }
       ]
     }),

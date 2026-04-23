@@ -10,13 +10,12 @@ export class CrestCarousel extends LitElement {
     super();
     this.index = 0;
 
-    // ALL GOLF COURSE IMAGES (fixed + consistent)
     this.images = [
-      "./elements/images/course1.jpg",
-      "https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2",
       "https://images.unsplash.com/photo-1592919505780-303950717480",
+      "https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2",
       "https://images.unsplash.com/photo-1535131749006-b7f58c99034b",
-      "https://images.unsplash.com/photo-1579952363877-27f3bade9f55"
+      "https://images.unsplash.com/photo-1579952363877-27f3bade9f55",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
     ];
   }
 
@@ -38,7 +37,6 @@ export class CrestCarousel extends LitElement {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     button {
@@ -50,11 +48,6 @@ export class CrestCarousel extends LitElement {
       border: none;
       padding: 8px;
       cursor: pointer;
-      opacity: 0.7;
-    }
-
-    button:hover {
-      opacity: 1;
     }
 
     .prev { left: 0; }
@@ -75,7 +68,6 @@ export class CrestCarousel extends LitElement {
         <div class="image-wrapper">
           <img src="${this.images[this.index]}" />
         </div>
-
         <button class="prev" @click=${this.prev}>◀</button>
         <button class="next" @click=${this.next}>▶</button>
       </div>

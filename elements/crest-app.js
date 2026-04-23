@@ -76,10 +76,10 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
           <h2>Team Roster</h2>
 
           <crest-roster .members=${[
-            { name: "Justin Lejeune", role: "Captain", image: "/images/golfer1.png" },
-            { name: "Alex Carter", role: "Player", image: "/images/golfer2.png" },
-            { name: "Noah Smith", role: "Player", image: "/images/golfer3.png" },
-            { name: "Jonah Lee", role: "Player", image: "/images/golfer4.png" }
+            { name: "Justin Lejeune", role: "Captain", image: "/images/golfer1.jpg" },
+            { name: "Alex Carter", role: "Player", image: "/images/golfer2.jpg" },
+            { name: "Noah Smith", role: "Player", image: "/images/golfer3.jpg" },
+            { name: "Jonah Lee", role: "Player", image: "/images/golfer4.jpg" }
           ]}></crest-roster>
 
         </crest-page>
@@ -91,8 +91,24 @@ export class CrestApp extends DDDSuper(I18NMixin(LitElement)) {
         <crest-page page="about">
           <h2>About Crest Golf League</h2>
           <p>
-            Crest Golf League is a competitive and community-driven golf league focused on skill,
-            sportsmanship, and elite competition.
+            Crest Golf League is a premier competitive golf league dedicated to excellence,
+            sportsmanship, and community. Our members compete across a full season of events
+            designed to challenge skill, strategy, and consistency.
+
+            From weekly matches to championship tournaments, Crest Golf League provides an
+            elite environment for golfers to improve their game and build lasting connections.
+
+            Whether you are a seasoned competitor or developing your skills, Crest offers a
+            structured, high-level experience focused on performance and growth.
+            </p>
+
+            <p>
+            Our courses are selected for both beauty and difficulty, ensuring that every round
+            presents a unique challenge. Players are expected to uphold the highest standards
+            of integrity and respect for the game.
+
+            Join us as we continue to build one of the most competitive and engaging golf
+            communities.
           </p>
 
           <crest-carousel>
