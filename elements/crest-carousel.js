@@ -45,10 +45,13 @@ export class CrestCarousel extends LitElement {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: black;
-      color: white;
+
+      background: var(--ddd-theme-primary);
+      color: var(--ddd-theme-default-white);
+
       border: none;
-      padding: 8px;
+      padding: var(--ddd-spacing-2);
+      border-radius: var(--ddd-radius-circle);
       cursor: pointer;
     }
 

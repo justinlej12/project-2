@@ -7,27 +7,46 @@ export class CrestRoster extends LitElement {
   };
 
   static styles = css`
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ddd-spacing-4);
+    justify-content: center;
+  }
 
+  .card {
+    width: 200px;
+    text-align: center;
+    background: var(--ddd-theme-default-white);
+    border-radius: var(--ddd-radius-md);
+    padding: var(--ddd-spacing-3);
+    box-shadow: var(--ddd-box-shadow-sm);
+  }
+
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--ddd-radius-sm);
+  }
+
+  h4 {
+    margin-top: var(--ddd-spacing-2);
+    font-size: var(--ddd-font-size-m);
+  }
+
+  p {
+    font-size: var(--ddd-font-size-s);
+    color: var(--ddd-theme-default-slate);
+  }
+
+  @media (prefers-color-scheme: dark) {
     .card {
-      width: 200px;
-      text-align: center;
-      background: var(--card-bg);
-      padding: 10px;
-      border-radius: 10px;
+      background: var(--ddd-theme-default-slateMax);
+      color: white;
     }
-    img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-  `;
+  }
+`;
 
   render() {
     return html`

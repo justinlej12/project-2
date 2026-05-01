@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+
 import "./crest-banner.js";
 import "./crest-animated.js";
 import "../crest-social.js";
@@ -14,19 +15,21 @@ export class CrestPage extends LitElement {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--ddd-font-body);
   }
 
   .content {
-    flex: 1; 
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
+    flex: 1;
+    padding: var(--ddd-spacing-5);
+
+    background: var(--ddd-theme-default-white);
+    color: var(--ddd-theme-default-black);
   }
 
   @media (prefers-color-scheme: dark) {
     .content {
-      background: rgba(20, 20, 20, 0.75);
-      color: white;
+      background: var(--ddd-theme-default-slateMax);
+      color: var(--ddd-theme-default-white);
     }
   }
 `;
